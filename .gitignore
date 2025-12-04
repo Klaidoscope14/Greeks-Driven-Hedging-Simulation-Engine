@@ -1,0 +1,103 @@
+# =========================
+# Build & Binary Artifacts
+# =========================
+build/
+build-debug/
+build-release/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Executables
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+
+# =========================
+# IDE / Editor Files
+# =========================
+# VSCode
+.vscode/
+*.code-workspace
+
+# CLion / JetBrains
+.idea/
+*.iml
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+
+# =========================
+# MacOS
+# =========================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# =========================
+# Logs & Temporary Files
+# =========================
+*.log
+*.tmp
+*.swp
+*.swo
+
+# =========================
+# Python / Notebooks
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.ipynb_checkpoints/
+
+# =========================
+# Output Data
+# =========================
+results/
+*.csv
+*.tsv
+
+# =========================
+# Credentials / Environment
+# =========================
+.env
+*.env
+*.json
+credentials.json
+
+# =========================
+# CMake preset outputs
+# =========================
+CMakeUserPresets.json
+
+# =========================
+# OS-specific
+# =========================
+Thumbs.db
+ehthumbs.db
+
+# =========================
+# Backup files
+# =========================
+*.bak
+*.old
+*.orig
+
+# =========================
+# Ignore large generated files
+# =========================
+*.png
+*.pdf
+
+# =========================
+# Test binaries
+# =========================
+unit_tests
