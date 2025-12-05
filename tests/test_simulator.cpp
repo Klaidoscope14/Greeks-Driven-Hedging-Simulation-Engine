@@ -1,4 +1,3 @@
-// tests/test_simulator.cpp
 #include <gtest/gtest.h>
 #include <filesystem>
 
@@ -14,7 +13,6 @@ namespace fs = std::filesystem;
  * No main() here; gtest_main handles test runner.
  */
 TEST(SimulatorTest, RunProducesCSV) {
-    // Use the config type your Simulator expects. If it expects SimConfig, change accordingly.
     sim::SimConfig cfg;
     cfg.S0 = 100.0;
     cfg.mu = 0.0;

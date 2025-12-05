@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-# Create build and results directories, build the project and run the binary.
-# Usage: ./run_simulation.sh
-
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
@@ -17,7 +13,6 @@ cmake ..
 make -j
 
 echo "Running simulation..."
-# Binary name as in CMakeLists
 ./options-mm
 
 echo "Simulation finished. Outputs (CSV) are in $RESULTS_DIR"

@@ -1,4 +1,3 @@
-// tests/test_hedging_strategy.cpp
 #include <gtest/gtest.h>
 
 #include "hedging/ThresholdHedging.hpp"

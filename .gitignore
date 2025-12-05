@@ -20,21 +20,6 @@ compile_commands.json
 *.dylib
 
 # =========================
-# IDE / Editor Files
-# =========================
-# VSCode
-.vscode/
-*.code-workspace
-
-# CLion / JetBrains
-.idea/
-*.iml
-
-# Xcode
-*.xcodeproj/
-*.xcworkspace/
-
-# =========================
 # MacOS
 # =========================
 .DS_Store

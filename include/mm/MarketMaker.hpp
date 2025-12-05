@@ -3,6 +3,7 @@
 
 #include "pricing/OptionSpecification.hpp"
 #include <optional>
+using namespace std;
 
 /*
  * Simple MarketMaker: quotes mid = model_price and provides bid/ask by applying spread.
@@ -10,28 +11,23 @@
  */
 
 namespace mm {
+    struct Quote {
+        double bid;
+        double ask;
+    };
 
-struct Quote {
-    double bid;
-    double ask;
-};
+    class MarketMaker {
+    public:
+        MarketMaker(double spread_pct = 0.01);
+        Quote quote(double model_price) const;
 
-class MarketMaker {
-public:
-    MarketMaker(double spread_pct = 0.01);
+        void add_option_position(int qty);
+        int option_inventory() const;
 
-    // generate quote around model price
-    Quote quote(double model_price) const;
+    private:
+        double spread_pct_;
+        int option_inventory_;
+    };
+} 
 
-    // inventory setters/getters (basic)
-    void add_option_position(int qty);
-    int option_inventory() const;
-
-private:
-    double spread_pct_;
-    int option_inventory_;
-};
-
-} // namespace mm
-
-#endif // MARKETMAKER_HPP
+#endif 

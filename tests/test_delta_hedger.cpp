@@ -1,4 +1,3 @@
-// tests/test_delta_hedger.cpp
 #include <gtest/gtest.h>
 #include <cmath>
 

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Small helper to read a CSV produced by the sim and plot the price path.
 Requires pandas and matplotlib.

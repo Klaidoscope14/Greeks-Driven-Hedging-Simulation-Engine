@@ -13,6 +13,7 @@ vector<double> UnderlyingSimulator::simulate_path(int N, double dt) {
     vector<double> path;
     path.reserve(N + 1);
     path.push_back(S0_);
+
     double S = S0_;
     for (int i = 0; i < N; ++i) {
         double z = rng_.normal(0.0, 1.0);
@@ -21,6 +22,7 @@ vector<double> UnderlyingSimulator::simulate_path(int N, double dt) {
         S = S * exp(dlogS);
         path.push_back(S);
     }
+
     return path;
 }
 
@@ -28,4 +30,4 @@ void UnderlyingSimulator::reseed(uint64_t seed) {
     rng_.reseed(seed);
 }
 
-} // namespace market
+} 

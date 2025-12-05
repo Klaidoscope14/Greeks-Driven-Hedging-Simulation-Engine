@@ -2,6 +2,7 @@
 #define OPTION_SPECIFICATION_HPP
 
 #include "core/Types.hpp"
+using namespace std;
 
 /*
  * OptionSpecification holds basic option instrument data:
@@ -11,18 +12,16 @@
  */
 
 namespace pricing {
+    struct OptionSpecification {
+        core::OptionType type;
+        double strike;
+        double maturity; 
 
-struct OptionSpecification {
-    core::OptionType type;
-    double strike;
-    double maturity; // years
+        OptionSpecification(core::OptionType t = core::OptionType::Call,
+                            double k = 100.0,
+                            double T = 0.5)
+            : type(t), strike(k), maturity(T) {}
+    };
+} 
 
-    OptionSpecification(core::OptionType t = core::OptionType::Call,
-                        double k = 100.0,
-                        double T = 0.5)
-        : type(t), strike(k), maturity(T) {}
-};
-
-} // namespace pricing
-
-#endif // OPTION_SPECIFICATION_HPP
+#endif 

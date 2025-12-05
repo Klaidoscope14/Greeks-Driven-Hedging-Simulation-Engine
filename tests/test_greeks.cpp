@@ -1,4 +1,3 @@
-// tests/test_greeks.cpp
 #include <gtest/gtest.h>
 
 #include "greeks/GreeksCalculator.hpp"

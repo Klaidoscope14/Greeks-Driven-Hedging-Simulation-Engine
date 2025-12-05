@@ -1,6 +1,6 @@
 # Options Market Maker Simulation 
 
-A comprehensive, professional-grade simulation framework for option pricing, market making, delta hedging, and execution modelling. This project is designed to demonstrate strong quantitative, mathematical, and software engineering skills, suitable for quant interviews and real‑world research experimentation.
+A comprehensive, professional-grade simulation framework for option pricing, market making, delta hedging, and execution modelling. 
 
 ---
 
@@ -220,39 +220,3 @@ You may extend this project using:
 * Order book simulation
 * Gamma & Vega hedging
 * Reinforcement‑learning‑based hedging (advanced option)
-
----
-
-## 🎯 Purpose of This Project
-
-This project is intentionally structured like something you would develop as:
-
-* A **Quantitative Research Intern**
-* A **Derivatives Trader Intern**
-* A **Quant Developer**
-* A **Risk Analyst**
-
-It demonstrates mastery of:
-
-* Numerical methods
-* Stochastic calculus
-* Option pricing theory
-* Hedging techniques
-* C++ architecture + industry practices
-* Testing & simulation frameworks
-
----
-
-## 📜 License
-
-MIT License (Optional — Add if publishing publicly)
-
----
-
-## 🙌 Acknowledgments
-
-This simulator is inspired by classical quantitative finance literature including:
-
-* Hull’s *Options, Futures, and Other Derivatives*
-* Wilmott's *Paul Wilmott Introduces Quantitative Finance*
-* Various industry market‑making research notes

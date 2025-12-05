@@ -2,6 +2,7 @@
 #define INVENTORYMANAGER_HPP
 
 #include <mutex>
+using namespace std;
 
 /*
  * InventoryManager: thread-safe holder for option and underlying positions.
@@ -10,26 +11,24 @@
  */
 
 namespace mm {
+    class InventoryManager {
+    public:
+        InventoryManager() = default;
 
-class InventoryManager {
-public:
-    InventoryManager() = default;
+        void add_underlying(double qty);
+        void add_options(int qty);
 
-    void add_underlying(double qty);
-    void add_options(int qty);
+        double underlying() const;
+        int options() const;
 
-    double underlying() const;
-    int options() const;
+        void set_underlying(double qty);
+        void set_options(int qty);
 
-    void set_underlying(double qty);
-    void set_options(int qty);
+    private:
+        mutable std::mutex mtx_;
+        double underlying_pos_ = 0.0;
+        int option_pos_ = 0;
+    };
+} 
 
-private:
-    mutable std::mutex mtx_;
-    double underlying_pos_ = 0.0;
-    int option_pos_ = 0;
-};
-
-} // namespace mm
-
-#endif // INVENTORYMANAGER_HPP
+#endif 

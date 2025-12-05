@@ -6,6 +6,8 @@
  * This is separated from MarketMaker to keep quoting logic modular.
  */
 
+using namespace std;
+
 namespace mm {
 
 struct SimpleQuote {
@@ -22,13 +24,18 @@ public:
         return SimpleQuote{model_price - half, model_price + half};
     }
 
-    double spread_pct() const { return spread_pct_; }
-    void set_spread_pct(double p) { spread_pct_ = p; }
+    double spread_pct() const { 
+        return spread_pct_; 
+    }
+
+    void set_spread_pct(double p) { 
+        spread_pct_ = p; 
+    }
 
 private:
     double spread_pct_;
 };
 
-} // namespace mm
+} 
 
-#endif // QUOTEGENERATOR_HPP
+#endif 

@@ -3,6 +3,7 @@
 
 #include "util/Random.hpp"
 #include <vector>
+using namespace std;
 
 /*
  * Simple GBM underlying simulator.
@@ -10,23 +11,19 @@
  */
 
 namespace market {
+    class UnderlyingSimulator {
+    public:
+        UnderlyingSimulator(double S0, double mu, double sigma, uint64_t seed = 42);
+        std::vector<double> simulate_path(int N, double dt);
 
-class UnderlyingSimulator {
-public:
-    UnderlyingSimulator(double S0, double mu, double sigma, uint64_t seed = 42);
+        void reseed(uint64_t seed);
 
-    // simulate N steps of dt (in years), returns vector of size N+1 including S0
-    std::vector<double> simulate_path(int N, double dt);
+    private:
+        double S0_;
+        double mu_;
+        double sigma_;
+        util::Random rng_;
+    };
+} 
 
-    void reseed(uint64_t seed);
-
-private:
-    double S0_;
-    double mu_;
-    double sigma_;
-    util::Random rng_;
-};
-
-} // namespace market
-
-#endif // UNDERLYINGSIMULATOR_HPP
+#endif 

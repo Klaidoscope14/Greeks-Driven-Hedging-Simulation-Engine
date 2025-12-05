@@ -38,5 +38,4 @@ int main() {
     simulator.run(opt, "results/simulation_output.csv");
 
     log_info("Done.");
-    return 0;
 }

@@ -5,6 +5,7 @@
 #include "../pricing/BinomialTree.hpp"
 #include "../execution/Order.hpp"
 #include <functional>
+using namespace std;
 
 /*
  * DeltaHedger decides on the underlying trade required to neutralize delta.
@@ -14,23 +15,21 @@
  */
 
 namespace hedging {
+    class DeltaHedger {
+    public:
+        DeltaHedger(double threshold = 0.01);
 
-class DeltaHedger {
-public:
-    DeltaHedger(double threshold = 0.01);
+        // compute target underlying qty (signed) given option delta and option contract size
+        double target_quantity(double option_delta, double option_notional = 1.0);
 
-    // compute target underlying qty (signed) given option delta and option contract size
-    double target_quantity(double option_delta, double option_notional = 1.0);
+        // check and produce an order to move current position toward target
+        // returns true if an order is produced and fills 'ord'
+        // Note: use ::execution::Order to avoid ambiguity with std::execution
+        bool decide(double option_delta, double option_notional, double &current_pos, ::execution::Order &ord);
 
-    // check and produce an order to move current position toward target
-    // returns true if an order is produced and fills 'ord'
-    // Note: use ::execution::Order to avoid ambiguity with std::execution
-    bool decide(double option_delta, double option_notional, double &current_pos, ::execution::Order &ord);
+    private:
+        double threshold_;
+    };
+} 
 
-private:
-    double threshold_;
-};
-
-} // namespace hedging
-
-#endif // DELTAHEDGER_HPP
+#endif 

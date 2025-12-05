@@ -1,17 +1,7 @@
-// src/hedging/DeltaHedger.cpp
 #include "hedging/DeltaHedger.hpp"
 #include <cmath>
 #include <sstream>
 #include "util/Logger.hpp"
-
-/*
- * DeltaHedger implementation.
- *
- * We avoid `using namespace execution;` because `execution` collides with
- * `std::execution` on some systems. Instead we refer to ::execution::Order
- * and ::execution::OrderSide explicitly to remove ambiguity.
- */
-
 using namespace std;
 using namespace util;
 
@@ -37,15 +27,19 @@ double DeltaHedger::target_quantity(double option_delta, double option_notional)
 bool DeltaHedger::decide(double option_delta, double option_notional, double &current_pos, ::execution::Order &ord) {
     double target = target_quantity(option_delta, option_notional);
     double diff = target - current_pos;
+
     if (fabs(diff) < threshold_) return false; // no trade required
 
     // create a market order for the required difference
     if (diff > 0) {
         ord = ::execution::Order(::execution::OrderSide::Buy, fabs(diff), 0.0);
-    } else {
+    } 
+    
+    else {
         ord = ::execution::Order(::execution::OrderSide::Sell, fabs(diff), 0.0);
     }
+
     return true;
 }
 
-} // namespace hedging
+} 

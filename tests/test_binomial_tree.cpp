@@ -1,4 +1,3 @@
-// tests/test_binomial_tree.cpp
 #include <gtest/gtest.h>
 #include <cmath>
 

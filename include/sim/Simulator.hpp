@@ -11,6 +11,7 @@
 #include "../mm/MarketMaker.hpp"
 #include "../util/CSVWriter.hpp"
 #include <string>
+using namespace std;
 
 /*
  * Simulator orchestrates:
@@ -22,32 +23,28 @@
  */
 
 namespace sim {
+    struct SimConfig {
+        double S0;
+        double mu;
+        double sigma;
+        double r;
+        int steps;
+        double T; 
+        double option_notional; // how many shares per option contract (1 by default)
+        double hedger_threshold;
+        double tx_fixed;
+        double tx_pct;
+        uint64_t seed;
+    };
 
-struct SimConfig {
-    double S0;
-    double mu;
-    double sigma;
-    double r;
-    int steps;
-    double T; // years
-    double option_notional; // how many shares per option contract (1 by default)
-    double hedger_threshold;
-    double tx_fixed;
-    double tx_pct;
-    uint64_t seed;
-};
+    class Simulator {
+    public:
+        Simulator(const SimConfig& cfg);    
+        void run(const pricing::OptionSpecification& opt, const std::string& csv_file);
 
-class Simulator {
-public:
-    Simulator(const SimConfig& cfg);
+    private:
+        SimConfig cfg_;
+    };
+} 
 
-    // Run the simulation and write results to csv_file
-    void run(const pricing::OptionSpecification& opt, const std::string& csv_file);
-
-private:
-    SimConfig cfg_;
-};
-
-} // namespace sim
-
-#endif // SIMULATOR_HPP
+#endif 
