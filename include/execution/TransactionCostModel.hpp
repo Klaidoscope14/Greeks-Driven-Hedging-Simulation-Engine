@@ -1,7 +1,7 @@
 #ifndef TRANSACTIONCOSTMODEL_HPP
 #define TRANSACTIONCOSTMODEL_HPP
 
-using namespace std;
+#include<cmath>
 
 /*
  * TransactionCostModel: encapsulates fixed and proportional costs.

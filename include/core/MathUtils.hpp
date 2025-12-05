@@ -2,7 +2,6 @@
 #define MATHUTILS_HPP
 
 #include <cmath>
-using namespace std;
 
 /*
  * Tiny math utilities used across the project.

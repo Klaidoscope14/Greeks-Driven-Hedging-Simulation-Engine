@@ -1,41 +1,46 @@
-#ifndef QUOTEGENERATOR_HPP
-#define QUOTEGENERATOR_HPP
+#ifndef MM_QUOTE_GENERATOR_HPP
+#define MM_QUOTE_GENERATOR_HPP
 
-/*
- * QuoteGenerator: create bid/ask around a mid model price.
- * This is separated from MarketMaker to keep quoting logic modular.
- */
-
-using namespace std;
+#include <utility> 
+#include <cmath>  
+#include "pricing/OptionSpecification.hpp"
+#include "pricing/BlackScholes.hpp"
 
 namespace mm {
+    /*
+    * QuoteGenerator:
+    * Produces bid/ask option quotes for the market maker.
+    * 
+    * Typical model:
+    *   mid = theoretical_price
+    *   bid = mid - spread/2
+    *   ask = mid + spread/2
+    * 
+    * spread may be dynamic depending on sigma, inventory, etc.
+    */
+    class QuoteGenerator {
+    public:
+        QuoteGenerator(double base_spread = 0.5)
+            : base_spread_(base_spread) {}
 
-struct SimpleQuote {
-    double bid;
-    double ask;
-};
+        // Generate bid/ask quotes for an option given spot S, r, sigma, and spec.
+        std::pair<double, double> generate(
+            double S,
+            double r,
+            double sigma,
+            const pricing::OptionSpecification& opt
+        ) const {
+            const double mid = pricing::BlackScholes::price(S, r, sigma, opt);
+            const double half = base_spread_ * 0.5;
+            return { 
+                mid - half, 
+                mid + half 
+            };
+        }
 
-class QuoteGenerator {
-public:
-    explicit QuoteGenerator(double spread_pct = 0.01) : spread_pct_(spread_pct) {}
-
-    SimpleQuote make_quote(double model_price) const {
-        double half = model_price * spread_pct_ * 0.5;
-        return SimpleQuote{model_price - half, model_price + half};
-    }
-
-    double spread_pct() const { 
-        return spread_pct_; 
-    }
-
-    void set_spread_pct(double p) { 
-        spread_pct_ = p; 
-    }
-
-private:
-    double spread_pct_;
-};
-
-} 
+    private:
+        double base_spread_;
+    };
+}
 
 #endif 
